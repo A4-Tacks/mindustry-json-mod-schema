@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "mod main file",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "name will be used to reference to your mod, so name it carefully. Should be in kebab-case (no capital letters, spaces are filled with '-') and shouldn't have any color formatting."
+        },
+        "displayName": {
+            "type": "string",
+            "description": "displayName this will be used as a display name for the UI, which you can use to add formatting to said name."
+        },
+        "author": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string",
+            "description": "description of the mod will be rendered in the ingame mod manager, so keep it short and to the point."
+        },
+        "version": {
+            "type": "string"
+        },
+        "minGameVersion": {
+            "type": "string",
+            "description": "minGameVersion is the minimum build version of the game. This is required to be a number greater than 105."
+        },
+        "dependencies": {
+            "type": "array",
+            "description": "dependencies is optional, if you want to know more about that, go to the dependencies section.",
+            "items": {
+                "type": "string",
+                "pattern": "^[^ ]+$"
+            }
+        },
+        "hidden": {
+            "type": "boolean",
+            "description": "hidden is whether or not this mod is essential for multiplayer, false by default. Texture packs, JS plugins, etc. should use this as to not cause conflicts with servers and clients respectively. As a rule of thumb, if your mod creates content it shouldn't be hidden."
+        }
+    }
+}
