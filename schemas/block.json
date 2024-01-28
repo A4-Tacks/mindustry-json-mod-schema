@@ -1,0 +1,810 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "./unlockable_content.json"
+        },
+        {
+            "properties": {
+                "hasItems": {
+                    "type": "boolean",
+                    "description": "If true, buildings have an ItemModule.",
+                    "default": false
+                },
+                "hasLiquids": {
+                    "type": "boolean",
+                    "description": "If true, buildings have a LiquidModule.",
+                    "default": false
+                },
+                "hasPower": {
+                    "type": "boolean",
+                    "description": "If true, buildings have a PowerModule.",
+                    "default": false
+                },
+                "outputsLiquid": {
+                    "type": "boolean",
+                    "description": "Flag for determining whether this block outputs liquid somewhere; used for connections.",
+                    "default": false
+                },
+                "consumesPower": {
+                    "type": "boolean",
+                    "description": "Used by certain power blocks (nodes) to flag as non-consuming of power. True by default, even if this block has no power.",
+                    "default": true
+                },
+                "outputsPower": {
+                    "type": "boolean",
+                    "description": "If true, this block is a generator that can produce power.",
+                    "default": false
+                },
+                "connectedPower": {
+                    "type": "boolean",
+                    "description": "If false, power nodes cannot connect to this block.",
+                    "default": true
+                },
+                "conductivePower": {
+                    "type": "boolean",
+                    "description": "If true, this block can conduct power like a cable.",
+                    "default": false
+                },
+                "outputsPayload": {
+                    "type": "boolean",
+                    "description": "If true, this block can output payloads; affects blending.",
+                    "default": false
+                },
+                "acceptsPayload": {
+                    "type": "boolean",
+                    "description": "If true, payloads will attempt to move into this block.",
+                    "default": false
+                },
+                "acceptsItems": {
+                    "type": "boolean",
+                    "description": "Visual flag use for blending of certain transportation blocks.",
+                    "default": false
+                },
+                "separateItemCapacity": {
+                    "type": "boolean",
+                    "description": "If true, all item capacities of this block are separate instead of pooled as one number.",
+                    "default": false
+                },
+                "itemCapacity": {
+                    "type": "number",
+                    "description": "maximum items this block can carry (usually, this is per-type of item)",
+                    "default": 10
+                },
+                "liquidCapacity": {
+                    "type": "number",
+                    "description": "maximum total liquids this block can carry if hasLiquids = true",
+                    "default": 10.0
+                },
+                "liquidPressure": {
+                    "type": "number",
+                    "description": "higher numbers increase liquid output speed; TODO remove and replace with better liquids system",
+                    "default": 1.0
+                },
+                "outputFacing": {
+                    "type": "boolean",
+                    "description": "If true, this block outputs to its facing direction, when applicable.\nUsed for blending calculations.",
+                    "default": true
+                },
+                "noSideBlend": {
+                    "type": "boolean",
+                    "description": "if true, this block does not accept input from the sides (used for armored conveyors)",
+                    "default": false
+                },
+                "displayFlow": {
+                    "type": "boolean",
+                    "description": "whether to display flow rate",
+                    "default": true
+                },
+                "inEditor": {
+                    "type": "boolean",
+                    "description": "whether this block is visible in the editor",
+                    "default": true
+                },
+                "lastConfig": {
+                    "type": "object",
+                    "description": "the last configuration value applied to this block.",
+                    "default": null
+                },
+                "saveConfig": {
+                    "type": "boolean",
+                    "description": "whether to save the last config and apply it to newly placed blocks",
+                    "default": false
+                },
+                "copyConfig": {
+                    "type": "boolean",
+                    "description": "whether to allow copying the config through middle click",
+                    "default": true
+                },
+                "clearOnDoubleTap": {
+                    "type": "boolean",
+                    "description": "if true, double-tapping this configurable block clears configuration.",
+                    "default": false
+                },
+                "update": {
+                    "type": "boolean",
+                    "description": "whether this block has a tile entity that updates",
+                    "default": false
+                },
+                "destructible": {
+                    "type": "boolean",
+                    "description": "whether this block has health and can be destroyed",
+                    "default": false
+                },
+                "unloadable": {
+                    "type": "boolean",
+                    "description": "whether unloaders work on this block",
+                    "default": true
+                },
+                "isDuct": {
+                    "type": "boolean",
+                    "description": "if true, this block acts a duct and will connect to armored ducts from the side.",
+                    "default": false
+                },
+                "allowResupply": {
+                    "type": "boolean",
+                    "description": "whether units can resupply by taking items from this block",
+                    "default": false
+                },
+                "solid": {
+                    "type": "boolean",
+                    "description": "whether this is solid",
+                    "default": false
+                },
+                "solidifes": {
+                    "type": "boolean",
+                    "description": "whether this block CAN be solid.",
+                    "default": false
+                },
+                "teamPassable": {
+                    "type": "boolean",
+                    "description": "if true, this counts as a non-solid block to this team.",
+                    "default": false
+                },
+                "underBullets": {
+                    "type": "boolean",
+                    "description": "if true, this block cannot be hit by bullets unless explicitly targeted.",
+                    "default": false
+                },
+                "rotate": {
+                    "type": "boolean",
+                    "description": "whether this is rotatable",
+                    "default": false
+                },
+                "rotateDraw": {
+                    "type": "boolean",
+                    "description": "if rotate is true and this is false, the region won't rotate when drawing",
+                    "default": true
+                },
+                "lockRotation": {
+                    "type": "boolean",
+                    "description": "if rotate = false and this is true, rotation will be locked at 0 when placing (default); advanced use only",
+                    "default": true
+                },
+                "invertFlip": {
+                    "type": "boolean",
+                    "description": "if true, schematic flips with this block are inverted.",
+                    "default": false
+                },
+                "variants": {
+                    "type": "number",
+                    "description": "number of different variant regions to use",
+                    "default": 0
+                },
+                "drawArrow": {
+                    "type": "boolean",
+                    "description": "whether to draw a rotation arrow - this does not apply to lines of blocks",
+                    "default": true
+                },
+                "drawTeamOverlay": {
+                    "type": "boolean",
+                    "description": "whether to draw the team corner by default",
+                    "default": true
+                },
+                "saveData": {
+                    "type": "boolean",
+                    "description": "for static blocks only: if true, tile data() is saved in world data.",
+                    "default": false
+                },
+                "breakable": {
+                    "type": "boolean",
+                    "description": "whether you can break this with rightclick",
+                    "default": false
+                },
+                "rebuildable": {
+                    "type": "boolean",
+                    "description": "whether to add this block to brokenblocks",
+                    "default": true
+                },
+                "privileged": {
+                    "type": "boolean",
+                    "description": "if true, this logic-related block can only be used with privileged processors (or is one itself)",
+                    "default": false
+                },
+                "requiresWater": {
+                    "type": "boolean",
+                    "description": "whether this block can only be placed on water",
+                    "default": false
+                },
+                "placeableLiquid": {
+                    "type": "boolean",
+                    "description": "whether this block can be placed on any liquids, anywhere",
+                    "default": false
+                },
+                "placeablePlayer": {
+                    "type": "boolean",
+                    "description": "whether this block can be placed directly by the player via PlacementFragment",
+                    "default": true
+                },
+                "placeableOn": {
+                    "type": "boolean",
+                    "description": "whether this floor can be placed on.",
+                    "default": true
+                },
+                "insulated": {
+                    "type": "boolean",
+                    "description": "whether this block has insulating properties.",
+                    "default": false
+                },
+                "squareSprite": {
+                    "type": "boolean",
+                    "description": "whether the sprite is a full square.",
+                    "default": true
+                },
+                "absorbLasers": {
+                    "type": "boolean",
+                    "description": "whether this block absorbs laser attacks.",
+                    "default": false
+                },
+                "enableDrawStatus": {
+                    "type": "boolean",
+                    "description": "if false, the status is never drawn",
+                    "default": true
+                },
+                "drawDisabled": {
+                    "type": "boolean",
+                    "description": "whether to draw disabled status",
+                    "default": true
+                },
+                "autoResetEnabled": {
+                    "type": "boolean",
+                    "description": "whether to automatically reset enabled status after a logic block has not interacted for a while.",
+                    "default": true
+                },
+                "noUpdateDisabled": {
+                    "type": "boolean",
+                    "description": "if true, the block stops updating when disabled",
+                    "default": false
+                },
+                "updateInUnits": {
+                    "type": "boolean",
+                    "description": "if true, this block updates when it's a payload in a unit.",
+                    "default": true
+                },
+                "alwaysUpdateInUnits": {
+                    "type": "boolean",
+                    "description": "if true, this block updates in payloads in units regardless of the experimental game rule",
+                    "default": false
+                },
+                "useColor": {
+                    "type": "boolean",
+                    "description": "Whether to use this block's color in the minimap. Only used for overlays.",
+                    "default": true
+                },
+                "itemDrop": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "item that drops from this block, used for drills",
+                    "default": null
+                },
+                "playerUnmineable": {
+                    "type": "boolean",
+                    "description": "if true, this block cannot be mined by players. useful for annoying things like sand.",
+                    "default": false
+                },
+                "attributes": {
+                    "type": "array",
+                    "description": "Array of affinities to certain things.",
+                    "default": []
+                },
+                "scaledHealth": {
+                    "type": "number",
+                    "description": "Health per square tile that this block occupies; essentially, this is multiplied by size * size. Overridden if health is > 0. If <0, the default is 40.",
+                    "default": -1
+                },
+                "health": {
+                    "type": "number",
+                    "description": "building health; -1 to use scaledHealth",
+                    "default": -1
+                },
+                "armor": {
+                    "type": "number",
+                    "description": "damage absorption, similar to unit armor",
+                    "default": 0.0
+                },
+                "baseExplosiveness": {
+                    "type": "number",
+                    "description": "base block explosiveness",
+                    "default": 0.0
+                },
+                "destroyBullet": {
+                    "description": "bullet that this block spawns when destroyed",
+                    "default": null
+                },
+                "destroyBulletSameTeam": {
+                    "type": "boolean",
+                    "description": "if true, destroyBullet is spawned on the block's team instead of Derelict team",
+                    "default": false
+                },
+                "lightLiquid": {
+                    "type": "string",
+                    "description": "liquid used for lighting",
+                    "default": null
+                },
+                "drawCracks": {
+                    "type": "boolean",
+                    "description": "whether cracks are drawn when this block is damaged",
+                    "default": true
+                },
+                "createRubble": {
+                    "type": "boolean",
+                    "description": "whether rubble is created when this block is destroyed",
+                    "default": true
+                },
+                "floating": {
+                    "type": "boolean",
+                    "description": "whether this block can be placed on edges of liquids.",
+                    "default": false
+                },
+                "size": {
+                    "type": "number",
+                    "description": "multiblock size",
+                    "default": 1
+                },
+                "offset": {
+                    "type": "number",
+                    "description": "multiblock offset",
+                    "default": 0.0
+                },
+                "sizeOffset": {
+                    "type": "number",
+                    "description": "offset for iteration (internal use only)",
+                    "default": 0
+                },
+                "clipSize": {
+                    "type": "number",
+                    "description": "Clipping size of this block. Should be as large as the block will draw.",
+                    "default": -1.0
+                },
+                "placeOverlapRange": {
+                    "type": "number",
+                    "description": "When placeRangeCheck is enabled, this is the range checked for enemy blocks.",
+                    "default": 50.0
+                },
+                "crushDamageMultiplier": {
+                    "type": "number",
+                    "description": "Multiplier of damage dealt to this block by tanks. Does not apply to crawlers.",
+                    "default": 1.0
+                },
+                "timers": {
+                    "type": "number",
+                    "description": "Max of timers used.",
+                    "default": 0
+                },
+                "cacheLayer": true,
+                "fillsTile": {
+                    "type": "boolean",
+                    "description": "Special flag; if false, floor will be drawn under this block even if it is cached.",
+                    "default": true
+                },
+                "forceDark": {
+                    "type": "boolean",
+                    "description": "If true, this block can be covered by darkness / fog even if synthetic.",
+                    "default": false
+                },
+                "alwaysReplace": {
+                    "type": "boolean",
+                    "description": "whether this block can be replaced in all cases",
+                    "default": false
+                },
+                "replaceable": {
+                    "type": "boolean",
+                    "description": "if false, this block can never be replaced.",
+                    "default": true
+                },
+                "group": true,
+                "flags": {
+                    "type": "array",
+                    "description": "List of block flags. Used for AI indexing."
+                },
+                "priority": {
+                    "type": "number",
+                    "description": "Targeting priority of this block, as seen by enemies.",
+                    "default": 0.0
+                },
+                "unitCapModifier": {
+                    "type": "number",
+                    "description": "How much this block affects the unit cap by.\nThe block flags must contain unitModifier in order for this to work.",
+                    "default": 0
+                },
+                "configurable": {
+                    "type": "boolean",
+                    "description": "Whether the block can be tapped and selected to configure.",
+                    "default": false
+                },
+                "commandable": {
+                    "type": "boolean",
+                    "description": "If true, this building can be selected like a unit when commanding.",
+                    "default": false
+                },
+                "allowConfigInventory": {
+                    "type": "boolean",
+                    "description": "If true, the building inventory can be shown with the config.",
+                    "default": true
+                },
+                "selectionRows": {
+                    "type": "number",
+                    "description": "Defines how large selection menus, such as that of sorters, should be.",
+                    "default": 5
+                },
+                "selectionColumns": {
+                    "type": "number",
+                    "description": "Defines how large selection menus, such as that of sorters, should be.",
+                    "default": 4
+                },
+                "logicConfigurable": {
+                    "type": "boolean",
+                    "description": "If true, this block can be configured by logic.",
+                    "default": false
+                },
+                "consumesTap": {
+                    "type": "boolean",
+                    "description": "Whether this block consumes touchDown events when tapped.",
+                    "default": false
+                },
+                "drawLiquidLight": {
+                    "type": "boolean",
+                    "description": "Whether to draw the glow of the liquid for this block, if it has one.",
+                    "default": true
+                },
+                "envRequired": {
+                    "type": "number",
+                    "description": "Environmental flags that are *all* required for this block to function. 0 = any environment",
+                    "default": 0
+                },
+                "envEnabled": {
+                    "type": "number",
+                    "description": "The environment flags that this block can function in. If the env matches any of these, it will be enabled.",
+                    "default": 1
+                },
+                "envDisabled": {
+                    "type": "number",
+                    "description": "The environment flags that this block *cannot* function in. If the env matches any of these, it will be *disabled*.",
+                    "default": 0
+                },
+                "sync": {
+                    "type": "boolean",
+                    "description": "Whether to periodically sync this block across the network.",
+                    "default": false
+                },
+                "conveyorPlacement": {
+                    "type": "boolean",
+                    "description": "Whether this block uses conveyor-type placement mode.",
+                    "default": false
+                },
+                "allowDiagonal": {
+                    "type": "boolean",
+                    "description": "If false, diagonal placement (ctrl) for this block is not allowed.",
+                    "default": true
+                },
+                "swapDiagonalPlacement": {
+                    "type": "boolean",
+                    "description": "Whether to swap the diagonal placement modes.",
+                    "default": false
+                },
+                "schematicPriority": {
+                    "type": "number",
+                    "description": "Build queue priority in schematics.",
+                    "default": 0
+                },
+                "mapColor": {
+                    "type": "string",
+                    "description": "The color of this block when displayed on the minimap or map preview.\nDo not set manually! This is overridden when loading for most blocks.",
+                    "default": "000000ff"
+                },
+                "hasColor": {
+                    "type": "boolean",
+                    "description": "Whether this block has a minimap color.",
+                    "default": false
+                },
+                "targetable": {
+                    "type": "boolean",
+                    "description": "Whether units target this block.",
+                    "default": true
+                },
+                "attacks": {
+                    "type": "boolean",
+                    "description": "If true, this block attacks and is considered a turret in the indexer. Building must implement Ranged.",
+                    "default": false
+                },
+                "suppressable": {
+                    "type": "boolean",
+                    "description": "If true, this block is mending-related and can be suppressed with special units/missiles.",
+                    "default": false
+                },
+                "canOverdrive": {
+                    "type": "boolean",
+                    "description": "Whether the overdrive core has any effect on this block.",
+                    "default": true
+                },
+                "outlineColor": {
+                    "type": "string",
+                    "description": "Outlined icon color.",
+                    "default": "404049ff"
+                },
+                "outlineIcon": {
+                    "type": "boolean",
+                    "description": "Whether any icon region has an outline added.",
+                    "default": false
+                },
+                "outlineRadius": {
+                    "type": "number",
+                    "description": "Outline icon radius.",
+                    "default": 4
+                },
+                "outlinedIcon": {
+                    "type": "number",
+                    "description": "Which of the icon regions gets the outline added. Uses last icon if <= 0.",
+                    "default": -1
+                },
+                "hasShadow": {
+                    "type": "boolean",
+                    "description": "Whether this block has a shadow under it.",
+                    "default": true
+                },
+                "customShadow": {
+                    "type": "boolean",
+                    "description": "If true, a custom shadow (name-shadow) is drawn under this block.",
+                    "default": false
+                },
+                "placePitchChange": {
+                    "type": "boolean",
+                    "description": "Should the sound made when this block is built change in pitch.",
+                    "default": true
+                },
+                "breakPitchChange": {
+                    "type": "boolean",
+                    "description": "Should the sound made when this block is deconstructed change in pitch.",
+                    "default": true
+                },
+                "placeSound": {
+                    "type": "string",
+                    "description": "Sound made when this block is built."
+                },
+                "breakSound": {
+                    "type": "string",
+                    "description": "Sound made when this block is deconstructed."
+                },
+                "destroySound": {
+                    "type": "string",
+                    "description": "Sounds made when this block is destroyed."
+                },
+                "albedo": {
+                    "type": "number",
+                    "description": "How reflective this block is.",
+                    "default": 0.0
+                },
+                "lightColor": {
+                    "type": "string",
+                    "description": "Environmental passive light color.",
+                    "default": "ffffffff"
+                },
+                "emitLight": {
+                    "type": "boolean",
+                    "description": "Whether this environmental block passively emits light.\nDoes not change behavior for non-environmental blocks, but still updates clipSize.",
+                    "default": false
+                },
+                "lightRadius": {
+                    "type": "number",
+                    "description": "Radius of the light emitted by this block.",
+                    "default": 60.0
+                },
+                "fogRadius": {
+                    "type": "number",
+                    "description": "How much fog this block uncovers, in tiles. Cannot be dynamic. <= 0 to disable.",
+                    "default": -1
+                },
+                "loopSound": {
+                    "type": "string",
+                    "description": "The sound that this block makes while active. One sound loop. Do not overuse."
+                },
+                "loopSoundVolume": {
+                    "type": "number",
+                    "description": "Active sound base volume.",
+                    "default": 0.5
+                },
+                "ambientSound": {
+                    "type": "string",
+                    "description": "The sound that this block makes while idle. Uses one sound loop for all blocks."
+                },
+                "ambientSoundVolume": {
+                    "type": "number",
+                    "description": "Idle sound base volume.",
+                    "default": 0.05
+                },
+                "requirements": {
+                    "type": "array",
+                    "description": "Cost of constructing this block."
+                },
+                "category": {
+                    "type": "string",
+                    "description": "Category in place menu.",
+                    "oneOf": [
+                        {
+                            "enum": [
+                                "turret"
+                            ],
+                            "description": "Offensive turrets."
+                        },
+                        {
+                            "enum": [
+                                "production"
+                            ],
+                            "description": "Blocks that produce raw resources, such as drills."
+                        },
+                        {
+                            "enum": [
+                                "distribution"
+                            ],
+                            "description": "Blocks that move items around."
+                        },
+                        {
+                            "enum": [
+                                "liquid"
+                            ],
+                            "description": "Blocks that move liquids around."
+                        },
+                        {
+                            "enum": [
+                                "power"
+                            ],
+                            "description": "Blocks that generate or transport power."
+                        },
+                        {
+                            "enum": [
+                                "defense"
+                            ],
+                            "description": "Walls and other defensive structures."
+                        },
+                        {
+                            "enum": [
+                                "crafting"
+                            ],
+                            "description": "Blocks that craft things."
+                        },
+                        {
+                            "enum": [
+                                "units"
+                            ],
+                            "description": "Blocks that create units."
+                        },
+                        {
+                            "enum": [
+                                "effect"
+                            ],
+                            "description": "Things for storage or passive effects."
+                        },
+                        {
+                            "enum": [
+                                "logic"
+                            ],
+                            "description": "Blocks related to logic."
+                        }
+                    ],
+                    "default": "distribution"
+                },
+                "buildCost": {
+                    "type": "number",
+                    "description": "Time to build this block in ticks; do not modify directly!",
+                    "default": 20.0
+                },
+                "buildVisibility": {
+                    "type": "string",
+                    "description": "Whether this block is visible and can currently be built.",
+                    "default": "hidden"
+                },
+                "buildCostMultiplier": {
+                    "type": "number",
+                    "description": "Multiplier for speed of building this block.",
+                    "default": 1.0
+                },
+                "deconstructThreshold": {
+                    "type": "number",
+                    "description": "Build completion at which deconstruction finishes.",
+                    "default": 0.0
+                },
+                "instantDeconstruct": {
+                    "type": "boolean",
+                    "description": "If true, this block deconstructs immediately. Instant deconstruction implies no resource refund.",
+                    "default": false
+                },
+                "placeEffect": {
+                    "description": "Effect for placing the block. Passes size as rotation."
+                },
+                "breakEffect": {
+                    "description": "Effect for breaking the block. Passes size as rotation."
+                },
+                "destroyEffect": {
+                    "description": "Effect for destroying the block."
+                },
+                "researchCostMultiplier": {
+                    "type": "number",
+                    "description": "Multiplier for cost of research in tech tree.",
+                    "default": 1
+                },
+                "researchCostMultipliers": {
+                    "description": "Cost multipliers per-item."
+                },
+                "researchCost": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "description": "Override for research cost. Uses multipliers above and building requirements if not set.",
+                    "default": null
+                },
+                "instantTransfer": {
+                    "type": "boolean",
+                    "description": "Whether this block has instant transfer.",
+                    "default": false
+                },
+                "quickRotate": {
+                    "type": "boolean",
+                    "description": "Whether you can rotate this block after it is placed.",
+                    "default": true
+                },
+                "subclass": {
+                    "description": "Main subclass. Non-anonymous.",
+                    "default": null
+                },
+                "selectScroll": {
+                    "type": "number",
+                    "description": "Scroll position for certain blocks.",
+                    "default": 0.0
+                },
+                "buildType": {
+                    "description": "Building that is created for this block. Initialized in init() via reflection. Set manually if modded.",
+                    "default": null
+                },
+                "configurations": {
+                    "description": "Configuration handlers by type."
+                },
+                "itemFilter": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "Consumption filters."
+                },
+                "consumers": {
+                    "description": "Array of consumers used by this block. Only populated after init()."
+                },
+                "hasConsumers": {
+                    "type": "boolean",
+                    "description": "Set to true if this block has any consumers in its array.",
+                    "default": false
+                },
+                "consPower": {
+                    "description": "The single power consumer, if applicable.",
+                    "default": null
+                }
+            }
+        }
+    ]
+}
