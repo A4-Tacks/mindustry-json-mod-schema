@@ -12,18 +12,24 @@
             "description": "displayName this will be used as a display name for the UI, which you can use to add formatting to said name."
         },
         "author": {
-            "type": "string"
+            "type": "string",
+            "description": "mod author"
         },
         "description": {
             "type": "string",
             "description": "description of the mod will be rendered in the ingame mod manager, so keep it short and to the point."
         },
         "version": {
-            "type": "string"
+            "type": "string",
+            "description": "mod version"
         },
         "minGameVersion": {
-            "type": "string",
-            "description": "minGameVersion is the minimum build version of the game. This is required to be a number greater than 105."
+            "anyOf": [
+                {"type": "string"},
+                {"type": "number"}
+            ],
+            "description": "minGameVersion is the minimum build version of the game. This is required to be a number greater than 105.",
+            "default": ""
         },
         "dependencies": {
             "type": "array",
@@ -35,7 +41,8 @@
         },
         "hidden": {
             "type": "boolean",
-            "description": "hidden is whether or not this mod is essential for multiplayer, false by default. Texture packs, JS plugins, etc. should use this as to not cause conflicts with servers and clients respectively. As a rule of thumb, if your mod creates content it shouldn't be hidden."
+            "description": "hidden is whether or not this mod is essential for multiplayer, false by default. Texture packs, JS plugins, etc. should use this as to not cause conflicts with servers and clients respectively. As a rule of thumb, if your mod creates content it shouldn't be hidden.",
+            "default": false
         }
     }
 }
