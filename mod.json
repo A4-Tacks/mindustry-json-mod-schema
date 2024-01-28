@@ -2,6 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "description": "mod main file",
+    "required": ["name"],
     "properties": {
         "name": {
             "type": "string",
