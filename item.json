@@ -7,6 +7,11 @@
         },
         {
             "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "Color used in sorter",
+                    "default": "000000"
+                },
                 "explosiveness": {
                     "type": "number",
                     "description": "how explosive this item is.",
