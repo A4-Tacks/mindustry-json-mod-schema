@@ -1,0 +1,118 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "./unlockable_content.json"
+        },
+        {
+            "properties": {
+                "gas": {
+                    "type": "boolean",
+                    "description": "If true, this fluid is treated as a gas (and does not create puddles)",
+                    "default": false
+                },
+                "color": {
+                    "type": "string",
+                    "description": "Color used in pipes and on the ground.",
+                    "default": "000000"
+                },
+                "gasColor": {
+                    "type": "string",
+                    "description": "Color of this liquid in gas form.",
+                    "default": "bfbfbfff"
+                },
+                "barColor": {
+                    "type": "string",
+                    "description": "Color used in bars.",
+                    "default": "000000"
+                },
+                "lightColor": {
+                    "type": "string",
+                    "description": "Color used to draw lights. Note that the alpha channel is used to dictate brightness.",
+                    "default": "00000000"
+                },
+                "flammability": {
+                    "type": "number",
+                    "description": "0-1, 0 is completely not flammable, anything above that may catch fire when exposed to heat, 0.5+ is very flammable.",
+                    "default": 0.0
+                },
+                "temperature": {
+                    "type": "number",
+                    "description": "temperature: 0.5 is 'room' temperature, 0 is very cold, 1 is molten hot",
+                    "default": 0.5
+                },
+                "heatCapacity": {
+                    "type": "number",
+                    "description": "how much heat this liquid can store. 0.4=water (decent), anything lower is probably less dense and bad at cooling.",
+                    "default": 0.5
+                },
+                "viscosity": {
+                    "type": "number",
+                    "description": "how thick this liquid is. 0.5=water (relatively viscous), 1 would be something like tar (very slow).",
+                    "default": 0.5
+                },
+                "explosiveness": {
+                    "type": "number",
+                    "description": "how prone to exploding this liquid is, when heated. 0 = nothing, 1 = nuke",
+                    "default": 0.0
+                },
+                "blockReactive": {
+                    "type": "boolean",
+                    "description": "whether this fluid reacts in blocks at all (e.g. slag with water)",
+                    "default": true
+                },
+                "coolant": {
+                    "type": "boolean",
+                    "description": "if false, this liquid cannot be a coolant",
+                    "default": true
+                },
+                "moveThroughBlocks": {
+                    "type": "boolean",
+                    "description": "if true, this liquid can move through blocks as a puddle.",
+                    "default": false
+                },
+                "incinerable": {
+                    "type": "boolean",
+                    "description": "if true, this liquid can be incinerated in the incinerator block.",
+                    "default": true
+                },
+                "effect": {
+                    "type": "string",
+                    "description": "The associated status effect.",
+                    "default": "none"
+                },
+                "particleEffect": {
+                    "description": "Effect shown in puddles."
+                },
+                "particleSpacing": {
+                    "type": "number",
+                    "description": "Particle effect rate spacing in ticks.",
+                    "default": 60.0
+                },
+                "boilPoint": {
+                    "type": "number",
+                    "description": "Temperature at which this liquid vaporizes. This isn't just boiling.",
+                    "default": 2.0
+                },
+                "capPuddles": {
+                    "type": "boolean",
+                    "description": "If true, puddle size is capped.",
+                    "default": true
+                },
+                "vaporEffect": {
+                    "description": "Effect when this liquid vaporizes."
+                },
+                "hidden": {
+                    "type": "boolean",
+                    "description": "If true, this liquid is hidden in most UI.",
+                    "default": false
+                },
+                "canStayOn": {
+                    "type": "array",
+                    "description": "Liquids this puddle can stay on, e.g. oil on water."
+                }
+            }
+        }
+    ]
+}

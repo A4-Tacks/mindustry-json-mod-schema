@@ -15,6 +15,8 @@ function catch_error {
 }
 trap catch_error ERR
 
+git add .
+
 temp=$(mktemp)
 trap 'rm "$temp"' EXIT
 
