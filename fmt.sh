@@ -22,3 +22,5 @@ find ./* -name '*.json' -print0 | while read -rd '' file; do
     jq . --tab < "${file}" | sed 's/\t/    /g' > "${temp}"
     cat "${temp}" > "${file}"
 done
+
+git status
