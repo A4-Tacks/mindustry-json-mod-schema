@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "./unlockable_content.json"
+        },
+        {
+            "properties": {
+                "explosiveness": {
+                    "type": "number",
+                    "description": "how explosive this item is.",
+                    "default": 0.0
+                },
+                "flammability": {
+                    "type": "number",
+                    "description": "flammability above 0.3 makes this eligible for item burners.",
+                    "default": 0.0
+                },
+                "radioactivity": {
+                    "type": "number",
+                    "description": "how radioactive this item is.",
+                    "default": 0.0
+                },
+                "charge": {
+                    "type": "number",
+                    "description": "how electrically potent this item is.",
+                    "default": 0.0
+                },
+                "hardness": {
+                    "type": "number",
+                    "description": "drill hardness of the item",
+                    "default": 0
+                },
+                "cost": {
+                    "type": "number",
+                    "description": "base material cost of this item, used for calculating place times\n1 cost = 1 tick added to build time",
+                    "default": 1.0
+                },
+                "healthScaling": {
+                    "type": "number",
+                    "description": "When this item is present in the build cost, a block's <b>default</b> health is multiplied by 1 + scaling, where 'scaling' is summed together for all item requirement types.",
+                    "default": 0.0
+                },
+                "lowPriority": {
+                    "type": "boolean",
+                    "description": "if true, this item is of the lowest priority to drills."
+                },
+                "frames": {
+                    "type": "number",
+                    "description": "If >0, this item is animated.",
+                    "default": 0
+                },
+                "transitionFrames": {
+                    "type": "number",
+                    "description": "Number of generated transition frames between each frame",
+                    "default": 0
+                },
+                "frameTime": {
+                    "type": "number",
+                    "description": "Ticks in-between animation frames.",
+                    "default": 5.0
+                },
+                "buildable": {
+                    "type": "boolean",
+                    "description": "If true, this material is used by buildings. If false, this material will be incinerated in certain cores.",
+                    "default": true
+                },
+                "hidden": {
+                    "type": "boolean",
+                    "description": "If true, this item is hidden in most UI.",
+                    "default": false
+                }
+            }
+        }
+    ]
+}

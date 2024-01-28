@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "./mappable_content.json"
+        },
+        {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Localized description & details. May be null."
+                },
+                "alwaysUnlocked": {
+                    "type": "boolean",
+                    "description": "Whether this content is always unlocked in the tech tree.",
+                    "default": false
+                },
+                "inlineDescription": {
+                    "type": "boolean",
+                    "description": "Whether to show the description in the research dialog preview.",
+                    "default": true
+                },
+                "hideDetails": {
+                    "type": "boolean",
+                    "description": "Whether details of blocks are hidden in custom games if they haven't been unlocked in campaign mode.",
+                    "default": true
+                },
+                "generateIcons": {
+                    "type": "boolean",
+                    "description": "If false, all icon generation is disabled for this content; createIcons is not called.",
+                    "default": true
+                },
+                "iconId": {
+                    "type": "number",
+                    "description": "Special logic icon ID.",
+                    "default": 0
+                },
+                "selectionSize": {
+                    "type": "number",
+                    "description": "How big the content appears in certain selection menus",
+                    "default": 24.0
+                }
+            }
+        }
+    ]
+}
